@@ -1,7 +1,7 @@
-import { Controller, Get, Post } from '@nestjs/common';
-import { PrismaService } from './prisma/prisma.service';
-import { randomUUID } from 'node:crypto';
+import { Body, Controller, Get, HttpCode, Post } from '@nestjs/common';
 import { Notification } from '@prisma/client';
+import { CreateNotificationDto } from './createNotificationDto';
+import { PrismaService } from './prisma/prisma.service';
 
 @Controller('notifications')
 export class AppController {
@@ -12,14 +12,17 @@ export class AppController {
     return this.prismaService.notification.findMany();
   }
 
+  @HttpCode(201)
   @Post('create')
-  async create(): Promise<Notification> {
-    return await this.prismaService.notification.create({
+  async create(@Body() createNotificationDto: CreateNotificationDto): Promise<void> {
+    const { content, category, recipientId } = createNotificationDto;
+    await this.prismaService.notification.create({
       data: {
-        content: 'You have a new friendship request',
-        category: 'social',
-        recipientId: randomUUID(),
+        content,
+        category,
+        recipientId,
       },
     });
+    return;
   }
 }
