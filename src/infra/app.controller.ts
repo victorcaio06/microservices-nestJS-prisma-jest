@@ -1,5 +1,5 @@
 import { Body, Controller, Get, HttpCode, Post } from '@nestjs/common';
-import { CreateNotificationDto } from './createNotificationDto';
+import { CreateNotificationDto } from '../infra/createNotificationDto';
 import { PrismaService } from './prisma/prisma.service';
 
 @Controller('notifications')
