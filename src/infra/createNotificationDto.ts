@@ -4,13 +4,13 @@ export class CreateNotificationDto {
   @IsNotEmpty()
   @IsString()
   @Length(5, 240)
-  content: string;
+  content!: string;
 
   @IsNotEmpty()
   @IsString()
-  category: string;
+  category!: string;
 
   @IsNotEmpty()
   @IsUUID()
-  recipientId: string;
+  recipientId!: string;
 }
