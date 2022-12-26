@@ -8,6 +8,7 @@ export interface NotificationProps {
 }
 
 export class Notification {
+  private _id: string;
   private props: NotificationProps;
 
   constructor(props: NotificationProps) {
