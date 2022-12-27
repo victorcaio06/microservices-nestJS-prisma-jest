@@ -1,5 +1,5 @@
 import { Content } from './content';
-import { randomUUID } from 'node:crypto';
+import { randomUUID } from 'crypto';
 
 export interface NotificationProps {
   content: Content;
@@ -19,10 +19,6 @@ export class Notification {
 
   public get id() {
     return this._id;
-  }
-
-  public set id(id: string) {
-    this._id = id;
   }
 
   public set content(content: Content) {
