@@ -13,7 +13,7 @@ export class Notification {
   private _id: string;
   private props: NotificationProps;
 
-  constructor(props: NotificationProps) {
+  constructor(props: NotificationProps, ) {
     this._id = randomUUID();
     this.props = props;
   }
